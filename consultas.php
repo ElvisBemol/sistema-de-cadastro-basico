@@ -1,7 +1,9 @@
 <?php
 include_once("conexao.php");
 
-$sql = "select * from usuarios";
+$filtro = isset($_GET['filtro'])?$_GET['filtro']:"";
+
+$sql = "select * from usuarios where profissao like '%$filtro%' order by nome";
 $consulta = mysqli_query($connexao,$sql);
 $registros = mysqli_num_rows($consulta);  // mostrar quantas linhas existem no banco de dados 
 
@@ -42,8 +44,14 @@ $registros = mysqli_num_rows($consulta);  // mostrar quantas linhas existem no b
     
 </form>
             <?php
+
+        print " Resultado da pesquisa com a palavra <strong> $filtro </strong><br>";
+
+        if($registros>1){
 print"$registros = Registros enconntrados";
-         
+         }else{
+            print"$registros = Registro enconntrado"; 
+         }
         print"<br><br>";
         
         while($exibirRegistros = mysqli_fetch_array($consulta)){
@@ -52,12 +60,12 @@ $nome = $exibirRegistros[1];
 $email = $exibirRegistros[2];
 $profissao = $exibirRegistros[3];
 
-print "<article>";
+print "<article class='bloco'>";
 
 print "$codigo<br>";
 print "$nome<br>";
 print "$email<br>";
-print "$profissao<br>";
+print "$profissao";
 
 print"</article>";
 

@@ -32,12 +32,13 @@
     
     section {
         width: 870px;
-        height: 500px;
+        height: flex;
         margin-left: 10px;
         float: left;
         background-color: #fff;
         box-sizing: border-box;
         padding-left: 10px;
+        padding-right: 10px;
     }
     
     section h1 {
@@ -79,10 +80,15 @@
         margin-bottom: 10px;
     }
     
-    article {
+    section .blo {
+        max-width: 100%;
+    }
+    
+    .bloco {
         width: 100%;
         box-sizing: border-box;
         padding: 10px;
         background-color: #d6d5d5;
         margin-bottom: 5px;
+        max-height: 400px;
     }
